@@ -15,75 +15,66 @@ import com.luv2code.springdemo.entity.Customer;
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
 
-	//need to inject the session factory
+	// need to inject the session factory
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	
-	
+
 	@Override
 	public List<Customer> getCustomers() {
-		
+
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
-		
-		//create a query
-		String hql="from Customer order by  lastName";
-		Query<Customer>  theQuery = currentSession.createQuery(hql,Customer.class);
-		
-		
-		//execute query and get result list
-		List<Customer> customers=theQuery.getResultList();
-		
-		
-		//return the results
+
+		// create a query
+		String hql = "from Customer order by  lastName";
+		Query<Customer> theQuery = currentSession.createQuery(hql, Customer.class);
+
+		// execute query and get result list
+		List<Customer> customers = theQuery.getResultList();
+
+		// return the results
 		return customers;
 	}
 
-
-
 	@Override
 	public void saveCustomerDAO(Customer theCustomer) {
-		
+
 		// get the session
 		Session theSession = sessionFactory.getCurrentSession();
-		
-		//save  or update the customer to database
+
+		// save or update the customer to database
 		theSession.saveOrUpdate(theCustomer);
 		
+
 	}
-
-
 
 	@Override
 	public void updateCustomerDAO(int id) {
-		
-		
-		
+
 	}
-
-
 
 	@Override
 	public void deleteCustomerDAO(int id) {
-		
+
 		// get the current hibernate session
 		Session theSession = sessionFactory.getCurrentSession();
-		
+
+		// get the customer
+		Customer tempCustomer = theSession.get(Customer.class, id);
+
+		theSession.delete(tempCustomer);
+
 	}
 
-
-
 	@Override
-	public Customer getCustomer(int  theId) {
-		
+	public Customer getCustomer(int theId) {
+
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
+
 		// get the customer
-		Customer  tempCustomer = currentSession.get(Customer.class,theId);
-		
+		Customer tempCustomer = currentSession.get(Customer.class, theId);
+
 		return tempCustomer;
 	}
 

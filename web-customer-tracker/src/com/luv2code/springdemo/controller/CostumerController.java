@@ -29,6 +29,8 @@ public class CostumerController {
 	@GetMapping("/list")
 	public String listCostumer(Model theModel)
 	{
+		
+		System.out.println("in here");
 		// get customer from the customer service
 		List<Customer> theCustomers = customerService.getCustomers();
 		
