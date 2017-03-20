@@ -25,6 +25,8 @@
 			
 			<h3>Save Customer</h3>
 			
+			
+			<span><i>Fill out the form.(*) means required</i></span>
 			<form:form action="saveCustomer" modelAttribute="customer" method="POST">
 			
 				<!--  need to associate this data with customer id-->
@@ -37,8 +39,9 @@
 							<td><form:input path="firstName"/></td>
 						</tr>
 						<tr>
-							<td><label>Last name:</label></td>
+							<td><label>Last name (*):</label></td>
 							<td><form:input path="lastName"/></td>
+							<td><form:errors path="lastName" cssClass="error"/></td>
 						</tr>
 						<tr>
 							<td><label>Email:</label></td>
