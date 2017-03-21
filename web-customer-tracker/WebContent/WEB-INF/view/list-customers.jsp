@@ -50,7 +50,7 @@
 					
 					
 					<!--  construct an delete link -->
-					<c:url var="deleteLink" value="/customer/">
+					<c:url var="deleteLink" value="/customer/delete">
 						<c:param name="customerId" value="${tempCustomer.id}"/>
 					</c:url>
 					
@@ -67,10 +67,11 @@
 						<td>
 							<!-- display the update link -->
 							<a href="${updateLink}">Update</a>
+							<!-- display the delete link -->
 							<a href="${deleteLink}">Delete</a>
 						</td>
 						
-							<!-- display the delete link -->
+							
 							
 						
 					</tr>

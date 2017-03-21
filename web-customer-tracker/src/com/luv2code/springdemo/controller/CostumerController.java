@@ -5,10 +5,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,21 +58,17 @@ public class CostumerController {
 	}
 
 	@PostMapping("/saveCustomer")
-	public String saveCustomer(@Valid @ModelAttribute("customer") Customer theCustomer,BindingResult theBidingResult) {
+	public String saveCustomer(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBidingResult) {
 
-		
-		if(theBidingResult.hasErrors())
-		{
+		if (theBidingResult.hasErrors()) {
 			return "customer-form";
-		}
-		else {
+		} else {
 			customerService.saveCustomer(theCustomer);
 
 			String pageName = "redirect:/customer/list";
 			return pageName;
 		}
-		
-		
+
 	}
 
 	@GetMapping("/showFormForUpdate")
@@ -84,15 +83,35 @@ public class CostumerController {
 		String pageName = "customer-form";
 		return pageName;
 	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("customerId") int theId) {
+		 // get the customer from our service
+		 customerService.deleteCustomer(theId);
+		
+		// send over to our form
+		String pageName = "redirect:/customer/list";
+		return pageName;
+	}
+	
+	
+
+	// add initBinder to fix bug with whitespace
+
+	@InitBinder
+	public void initBinder(WebDataBinder databinder) {
+		System.out.println("hre in init binder");
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+		databinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
 
 	@RequestMapping("/processForm")
 	public String processForm(@Valid @ModelAttribute("customer") Customer theCostumer, BindingResult theBidingResult) {
-		
-		if(theBidingResult.hasErrors())
-		{
+
+		if (theBidingResult.hasErrors()) {
 			return "customer-form";
-		}
-		else {
+		} else {
 			return "customer-confirmation";
 		}
 	}
