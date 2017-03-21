@@ -10,6 +10,7 @@
 <link  href="${pageContext.request.contextPath}/resources/css/style.css" 
 	   type="text/css"
 	   rel="stylesheet" >
+<script src="${pageContext.request.contextPath}/resources/js/script.js" type="application/javascript"></script>
 <title>List Customers</title>
 </head>
 <body>
@@ -68,12 +69,9 @@
 							<!-- display the update link -->
 							<a href="${updateLink}">Update</a>
 							<!-- display the delete link -->
-							<a href="${deleteLink}">Delete</a>
+							<a href="${deleteLink}" onclick="areYouSure()">Delete</a>
 						</td>
-						
 							
-							
-						
 					</tr>
 				</c:forEach>
 			</table>
