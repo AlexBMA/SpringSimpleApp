@@ -5,12 +5,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script src="${pageContext.request.contextPath}/resources/js/script.js" type="application/javascript"></script>
 <!--  reference our style sheet -->
 <link  href="${pageContext.request.contextPath}/resources/css/style.css" 
 	   type="text/css"
 	   rel="stylesheet" >
-<script src="${pageContext.request.contextPath}/resources/js/script.js" type="application/javascript"></script>
+
 <title>List Customers</title>
 </head>
 <body>
