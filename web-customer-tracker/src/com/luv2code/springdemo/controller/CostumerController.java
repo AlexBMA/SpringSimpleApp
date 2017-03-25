@@ -100,7 +100,7 @@ public class CostumerController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder databinder) {
-		System.out.println("hre in init binder");
+		System.out.println("here in init binder");
 		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
 
 		databinder.registerCustomEditor(String.class, stringTrimmerEditor);

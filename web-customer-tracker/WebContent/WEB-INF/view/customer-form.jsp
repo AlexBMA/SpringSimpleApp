@@ -44,9 +44,17 @@
 							<td><form:errors path="lastName" cssClass="error"/></td>
 						</tr>
 						<tr>
-							<td><label>Email:</label></td>
+							<td><label>Email (*):</label></td>
 							<td><form:input path="email"/></td>
-						</tr>					
+							<td><form:errors path="email" cssClass="error"/></td>
+						</tr>
+						
+						<tr>
+							<td><label>Free passes (*):</label></td>
+							<td><form:input path="freePasses"/></td>
+							<td><form:errors path="freePasses" cssClass="error"/></td>
+						</tr>
+											
 						<tr>
 							<td><label></label></td>
 							<td><input type="submit" value="Save" class="save"/></td>

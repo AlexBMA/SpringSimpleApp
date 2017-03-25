@@ -6,50 +6,52 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="customer")
+@Table(name = "customer")
 public class Customer {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@NotNull(message="is requred")
-	@Size(min=1,message="is required")
-	@Column(name="last_name")
+
+	@NotNull(message = "is requred")
+	@Size(min = 1, message = "is required")
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name="email")
+
+	@NotNull(message = "is requred")
+	@Size(min = 1, message = "is required")
+	@Column(name = "email")
 	private String email;
-	
-	
-	
+
+	@NotNull(message="is required")     
+	@Min(value = 0, message = "must be greater than or equal to 0")
+	@Max(value = 10, message = "must be less or equal to 10")
+	@Column(name="free_passes")
+	private int freePasses;
 
 	public Customer() {
-		
+
 	}
 
-	
-	public Customer(String firstName, String lastName, String email) 
-	{
+	public Customer(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
-
 
 	public int getId() {
 		return id;
@@ -82,7 +84,13 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
+
+	public int getFreePasses() {
+		return freePasses;
+	}
+
+	public void setFreePasses(int freePasses) {
+		this.freePasses = freePasses;
+	}
+
 }
