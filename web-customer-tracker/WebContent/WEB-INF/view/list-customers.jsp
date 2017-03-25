@@ -30,6 +30,7 @@
 				<th>Last Name</th>
 				<th>Email</th>
 				<th>Free passes</th>
+				<th>Postal code</th>
 				<th>Action</th>
 			</tr>
 
@@ -52,6 +53,7 @@
 					<td>${tempCustomer.lastName}</td>
 					<td>${tempCustomer.email}</td>
 					<td>${tempCustomer.freePasses}</td>
+					<td>${tempCustomer.postalCode}</td>
 					<td>
 						<!-- display the update link --> 
 						<a href="${updateLink}">Update</a>

@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -32,11 +33,15 @@ public class Customer {
 	@Column(name = "email")
 	private String email;
 
-	@NotNull(message="is required")     
+	@NotNull(message = "is required")
 	@Min(value = 0, message = "must be greater than or equal to 0")
 	@Max(value = 10, message = "must be less or equal to 10")
-	@Column(name="free_passes")
+	@Column(name = "free_passes")
 	private int freePasses;
+
+	@Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 chars/digits")
+	@Column(name = "postal_code")
+	private String postalCode;
 
 	public Customer() {
 
@@ -46,11 +51,6 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 
 	public int getId() {
@@ -91,6 +91,20 @@ public class Customer {
 
 	public void setFreePasses(int freePasses) {
 		this.freePasses = freePasses;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", freePasses=" + freePasses + ", postalCode=" + postalCode + "]";
 	}
 
 }

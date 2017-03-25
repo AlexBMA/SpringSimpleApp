@@ -54,7 +54,11 @@
 							<td><form:input path="freePasses"/></td>
 							<td><form:errors path="freePasses" cssClass="error"/></td>
 						</tr>
-											
+							<tr>
+							<td><label>Postal code (*):</label></td>
+							<td><form:input path="postalCode"/></td>
+							<td><form:errors path="postalCode" cssClass="error"/></td>
+						</tr>						
 						<tr>
 							<td><label></label></td>
 							<td><input type="submit" value="Save" class="save"/></td>
