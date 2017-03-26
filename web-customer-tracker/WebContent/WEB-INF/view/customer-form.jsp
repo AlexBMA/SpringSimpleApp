@@ -58,7 +58,15 @@
 							<td><label>Postal code (*):</label></td>
 							<td><form:input path="postalCode"/></td>
 							<td><form:errors path="postalCode" cssClass="error"/></td>
-						</tr>						
+						</tr>		
+						
+						
+						<tr>
+							<td><label>Course code (*):</label></td>
+							<td><form:input path="courseCode"/></td>
+							<td><form:errors path="courseCode" cssClass="error"/></td>
+						</tr>		
+										
 						<tr>
 							<td><label></label></td>
 							<td><input type="submit" value="Save" class="save"/></td>

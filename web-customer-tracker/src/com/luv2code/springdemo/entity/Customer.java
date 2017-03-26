@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.luv2.code.springdemo.validation.CourseCode;
+
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -42,6 +44,11 @@ public class Customer {
 	@Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 chars/digits")
 	@Column(name = "postal_code")
 	private String postalCode;
+
+	@NotNull(message = "is required")
+	@CourseCode
+	@Column(name = "course_code")
+	private String courseCode;
 
 	public Customer() {
 
@@ -101,10 +108,17 @@ public class Customer {
 		this.postalCode = postalCode;
 	}
 
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", freePasses=" + freePasses + ", postalCode=" + postalCode + "]";
 	}
-
 }
