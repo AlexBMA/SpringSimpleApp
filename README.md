@@ -1,2 +1,2 @@
 # SpringSimpleApp
-a simple spring app
+a simple spring mvc app
